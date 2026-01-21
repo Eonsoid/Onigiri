@@ -222,7 +222,6 @@ body {
   height: 50px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: logoPulse 4s ease-in-out infinite;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   object-fit: cover;
 }
@@ -241,10 +240,6 @@ body {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
   }
-}
-
-.logo-text {
-  animation: logoPulse 4s ease-in-out infinite;
 }
 
 .logo-text {
