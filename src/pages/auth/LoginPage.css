@@ -23,8 +23,9 @@ body {
 }
 
 .login-wrapper {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
+  overflow-x: hidden;
 }
 
 /* LEFT SECTION */
@@ -44,7 +45,14 @@ body {
   top: 30px;
   right: 40px;
   display: flex;
-  gap: 30px;
+  gap: 20px;
+  z-index: 10;
+  
+  @media (max-width: 768px) {
+    right: 20px;
+    top: 20px;
+    gap: 15px;
+  }
 }
 
 /* Interactive Input Styles */
@@ -102,59 +110,124 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* Tablet and below */
+@media (max-width: 1024px) {
   .login-wrapper {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .welcome-section, .login-section {
+    width: 100%;
+    min-height: 50vh;
+    padding: 30px 20px;
   }
   
   .welcome-section {
-    min-height: auto;
-    padding: 20px;
+    padding-bottom: 60px;
+  }
+  
+  .food-images {
+    display: none; /* Hide food emojis on smaller screens for better performance */
+  }
+  
+  .welcome-text {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .top-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
   }
   
   .login-section {
-    padding: 20px;
-    min-height: auto;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 0 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .welcome-section, .login-section {
+    padding: 20px 15px;
   }
   
   .logo-container {
-    position: static;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin-bottom: 20px;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .brand-name {
+    font-size: 1.5rem;
+  }
+  
+  .brand-slogan {
+    font-size: 0.8rem;
+  }
+  
+  .welcome-text h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+  
+  .welcome-text p {
+    font-size: 1rem;
   }
   
   .top-nav {
     position: static;
-    top: auto;
-    right: auto;
-    margin-bottom: 20px;
     justify-content: center;
+    margin: 15px 0;
   }
   
-  .form-group {
-    margin-bottom: 15px;
+  .top-action-buttons {
+    width: 100%;
+    justify-content: space-around;
   }
   
   .input-custom {
-    padding: 12px;
-    font-size: 16px;
+    padding: 14px 12px;
+    font-size: 15px;
   }
   
-  .btn-login {
-    padding: 12px;
-    font-size: 16px;
+  .btn-login, .social-btn {
+    padding: 14px;
+    font-size: 15px;
   }
   
-  .social-login {
-    flex-direction: column;
-    gap: 10px;
+  .forgot-password {
+    font-size: 0.85rem;
   }
   
-  .social-btn {
-    width: 100%;
-    justify-content: center;
+  .divider {
+    margin: 20px 0;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+  .brand-name {
+    font-size: 1.3rem;
+  }
+  
+  .welcome-text h1 {
+    font-size: 1.5rem;
+  }
+  
+  .input-custom, .btn-login, .social-btn {
+    font-size: 14px;
   }
 }
 
@@ -498,23 +571,28 @@ body {
 }
 
 .input-custom {
-  padding: 14px;
-  border-radius: 12px;
-  border: 2px solid #ddd;
   width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
-}
-
-.input-custom:focus {
-  outline: none;
-  border-color: #ff6b35;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
 }
 
 .btn-login {
   width: 100%;
-  padding: 15px;
-  background: linear-gradient(135deg, #1e7e34, #155724);
+  padding: 16px;
+  background: var(--primary);
   color: white;
   border: none;
   border-radius: 8px;
@@ -522,19 +600,22 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
+  margin-top: 10px;
+  -webkit-tap-highlight-color: transparent;
+  
+  @media (max-width: 480px) {
+    padding: 14px;
+    font-size: 15px;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .btn-login:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(30, 126, 52, 0.4);
-  background: linear-gradient(135deg, #155724, #1e7e34);
-}
-
-.btn-login:disabled {
-  background: linear-gradient(135deg, #6c757d, #5a6268);
-  cursor: not-allowed;
-  transform: none;
 }
 
 .divider {
@@ -637,21 +718,28 @@ body {
 }
 
 .social-btn {
-  flex: 1;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 12px;
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
   font-weight: 500;
-}
-
-.social-btn:hover {
+  color: #333;
+  -webkit-tap-highlight-color: transparent;
+  
+  @media (max-width: 480px) {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
   border-color: #ff6b35;
   transform: translateY(-2px);
 }
