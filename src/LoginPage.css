@@ -512,21 +512,29 @@ body {
 }
 
 .btn-login {
-  background: linear-gradient(135deg, #ff6b35, #f7931e);
-  color: white;
-  border-radius: 12px;
-  padding: 14px;
   width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #1e7e34, #155724);
+  color: white;
   border: none;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn-login:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 8px 25px rgba(30, 126, 52, 0.4);
+  background: linear-gradient(135deg, #155724, #1e7e34);
+}
+
+.btn-login:disabled {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  cursor: not-allowed;
+  transform: none;
 }
 
 .divider {

@@ -7,6 +7,11 @@ const Homepage = () => {
   const navigate = useNavigate();
   const [activeNav, setActiveNav] = useState('food-order');
   const [activeCategory, setActiveCategory] = useState('all');
+  
+  // Get user data from localStorage
+  const userData = JSON.parse(localStorage.getItem('user')) || {};
+  const userName = userData.name || 'Guest';
+  
   const [cartItems, setCartItems] = useState([
     { id: 1, name: 'Vegan Pizza Dough', quantity: 1, price: 120.00, icon: '🍕' },
     { id: 2, name: 'Pepperoni Pizza', quantity: 1, price: 180.00, icon: '🍕' },
@@ -104,7 +109,7 @@ const Homepage = () => {
           <div className="user-profile">
             <div className="profile-image">👤</div>
             <div className="user-info">
-              <h3>Welcome back, Samurai Chef!</h3>
+              <h3>Welcome back, {userName}!</h3>
               <p>Ready to order delicious food?</p>
             </div>
           </div>

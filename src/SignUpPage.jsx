@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import logo from './assets/logo.png';
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -96,7 +97,13 @@ const SignUpPage = () => {
     // Simulate API call
     setTimeout(() => {
       console.log('Sign up successful!', formData);
-      // Handle successful sign up (you can redirect to login page here)
+      // Store user data and redirect to homepage
+      localStorage.setItem('user', JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password
+      }));
+      navigate('/home'); // Redirect to homepage after successful signup
       setIsLoading(false);
     }, 1500);
   };
