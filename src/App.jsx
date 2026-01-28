@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/auth/LoginPage';
 import SignUpPage from './pages/auth/SignUpPage';
 import Homepage from './homepage';
+import CategoryPage from './CategoryPage';
 import FavoritePage from './FavoritePage';
 import MessagesPage from './MessagesPage';
 import OrderHistoryPage from './OrderHistoryPage';
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={<Homepage />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/favorite" element={<FavoritePage />} />
         <Route path="/messages" element={<MessagesPage />} />
         <Route path="/order-history" element={<OrderHistoryPage />} />

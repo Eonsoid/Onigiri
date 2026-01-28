@@ -210,7 +210,10 @@ const Homepage = () => {
               <div
                 key={category.id}
                 className={`category-card ${activeCategory === category.id ? 'active' : ''}`}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() => {
+                  setActiveCategory(category.id);
+                  navigate(`/category/${category.id}`);
+                }}
               >
                 <div className="category-icon">
                   {category.image ? (
