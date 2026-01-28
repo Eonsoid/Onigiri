@@ -258,6 +258,43 @@ const LoginPage = () => {
                 </button>
               </div>
               {error && !formData.password && <span className="error-message">Password is required</span>}
+              {formData.password && (
+                <div style={{ 
+                  marginTop: '8px', 
+                  fontSize: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  <div style={{
+                    width: '60px',
+                    height: '4px',
+                    backgroundColor: '#e0e0e0',
+                    borderRadius: '2px',
+                    overflow: 'hidden'
+                  }}>
+                    <div style={{
+                      width: `${(passwordStrength.score / 6) * 100}%`,
+                      height: '100%',
+                      backgroundColor: passwordStrength.strength === 'Weak' ? '#ff4444' : 
+                                     passwordStrength.strength === 'Medium' ? '#ffaa00' : '#00c851',
+                      transition: 'all 0.3s ease'
+                    }}></div>
+                  </div>
+                  <span style={{
+                    color: passwordStrength.strength === 'Weak' ? '#ff4444' : 
+                           passwordStrength.strength === 'Medium' ? '#ffaa00' : '#00c851',
+                    fontWeight: '500'
+                  }}>
+                    {passwordStrength.strength}
+                  </span>
+                  {passwordStrength.feedback && (
+                    <span style={{ color: '#666', fontSize: '11px' }}>
+                      • {passwordStrength.feedback}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
             
             <div className="form-options">

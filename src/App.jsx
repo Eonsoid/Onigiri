@@ -1,7 +1,14 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// Import pages
 import LoginPage from './pages/auth/LoginPage';
 import SignUpPage from './pages/auth/SignUpPage';
-import Homepage from './pages/homepage';
+import Homepage from './homepage';
+import FavoritePage from './FavoritePage';
+import MessagesPage from './MessagesPage';
+import OrderHistoryPage from './OrderHistoryPage';
+import OthersPage from './OthersPage';
 
 function App() {
   return (
@@ -11,6 +18,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={<Homepage />} />
+        <Route path="/favorite" element={<FavoritePage />} />
+        <Route path="/messages" element={<MessagesPage />} />
+        <Route path="/order-history" element={<OrderHistoryPage />} />
+        <Route path="/others" element={<OthersPage />} />
       </Routes>
     </BrowserRouter>
   );
